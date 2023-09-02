@@ -1,6 +1,10 @@
+import { ThemeProvider } from '@/components/ThemeProvider'
+import { ClerkProvider } from '@clerk/nextjs'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Footer from '@/components/common/Footer'
+import Nav from '@/components/common/Nav'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,8 +19,18 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={inter.className}>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <Nav />
+            <main className="flex min-h-screen flex-col items-center justify-between p-24">
+            {children}
+            </main>
+            <Footer />
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   )
 }
