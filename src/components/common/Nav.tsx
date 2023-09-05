@@ -1,8 +1,7 @@
 "use client"
  
 import * as React from "react"
-import { LogIn, LogOut, Menu, Power, PowerOff, UserCog, X } from "lucide-react"
-
+import { Menu, Power, PowerOff, UserCog, X } from "lucide-react"
 
 import { SignInButton, useUser } from "@clerk/nextjs";
 
@@ -20,10 +19,6 @@ const Nav = () => {
     const { isLoaded, isSignedIn, user } = useUser();
 
     console.log('USER', user)
- 
-    // if (!isLoaded || !isSignedIn) {
-    //     return null;
-    // }
 
     const [mobileNavEnabled, setMobileNavEnabled] = useState(false)
 
@@ -39,13 +34,10 @@ const Nav = () => {
                     <h1 className="text-red-500 font-extrabold text-lg dark:text-white">
                         <Link href="/">7x7Discipleship</Link>
                     </h1>
-                    <div className="flex justify-center">
-                        <div className="flex max-sm:hidden dark:text-white font-semibold">
-                            <Link className="ml-3 hover:text-amber-500" href="/groups">Groups</Link>
-                        </div>
-                        <div className="flex max-sm:hidden dark:text-white font-semibold">
-                            <Link className="ml-3 hover:text-amber-500" href="/class/101">Class 101</Link>
-                        </div>
+                    <div className="flex justify-center space-x-2 max-sm:hidden dark:text-white">
+                        <Link className="hover:text-amber-500 font-semibold" href="/groups">Groups</Link>
+                        <Link className="hover:text-amber-500 font-semibold" href="/classes">Classes</Link>
+                        <Link className="hover:text-amber-500 font-semibold" href="/classes/101">Class 101</Link>
                     </div>
                     <div className="flex max-sm:hidden dark:text-white items-center space-x-2">
                         {
@@ -98,9 +90,8 @@ const Nav = () => {
                         )}
                     </div> */}
                     <button onClick={ () => handleNavClick('/groups')} className="text-xl my-3 text-left">Groups</button>
-                    <button onClick={ () => handleNavClick('/questions')} className="text-xl my-3 text-left">Questions</button>
+                    <button onClick={ () => handleNavClick('/class')} className="text-xl my-3 text-left">Class</button>
                     <button onClick={ () => handleNavClick('/leaderboards')} className="text-xl my-3 text-left">Leaderboards</button>
-                    <button onClick={ () => handleNavClick('/settings')} className="text-xl my-3 text-left">Settings</button>
                     <div className="text-xl flex justify-between my-3">
                     <ThemChanger />
                     </div>

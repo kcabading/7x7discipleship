@@ -1,3 +1,4 @@
+import BreadCrumbLayout from '@/components/common/client/BreadCrumbLayout'
 import type { Metadata } from 'next'
 // import awsconfig from '../aws-exports';
 // Amplify.configure(awsconfig);
@@ -10,8 +11,8 @@ export const metadata: Metadata = {
 function Layout({ children,}: { children: React.ReactNode} ) {
     return (
         <>
-            protected layout
-            {children}
+          <BreadCrumbLayout />
+          {children}
         </>
     )
 }
